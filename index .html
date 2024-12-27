@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.animate').forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    card.classList.add('visible');
+                }
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <header class="container-fluid bg-light  fixed-top " >
+        <div class="container d-flex justify-content-between align-items-center">
+            <!-- Logo -->
+            <div class="logo" >
+                <img src="data:image/png;base64,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"
+                alt="Logo du site" class="img-fluid" style="height: 70px; width: 130px;">
+            </div>
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg" >
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item me-3"><a class="nav-link fs-5" href="#accueil">Accueil</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fs-5" href="#formation">Formation</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fs-5" href="#service">Équipe</a></li>
+                        <li class="nav-item me-3"><a class="nav-link fs-5" href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <!-- Search Box -->
+            <div class="search-box d-none d-lg-flex align-items-center">
+                <input type="text" class="form-control" placeholder="Rechercher...">
+                <button type="submit" class="btn btn-primary ms-2"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel"  >
+        <!-- Indicateurs du carrousel -->
+        <div class="carousel-indicators" >
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- Contenu des diapositives -->
+        <div class="carousel-inner mt-5"  id="accueil" >
+            <div class="carousel-item active">
+                <img src="https://img.freepik.com/free-photo/three-happy-international-university-graduates-smiling-rejoicing-holding-diplomas-future-lawyers-engineers_176420-14302.jpg?t=st=1731507775~exp=1731511375~hmac=842bce11be8655b0d40ff75267998bb06a0b0b092fdeaaffd51f85e853a28c99&w=1060"
+                    class="d-block mx-auto" style="width:100%; height: 400px;" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/free-photo/young-busines-training-discussion-group_1303-910.jpg?t=st=1731507351~exp=1731510951~hmac=0c9d727486959483c9258c37a1d2f4b2cc284eb55fec63cb0ad1a39a731c9c82&w=1060"
+                    class="d-block mx-auto" style="width:100%; height: 400px;" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/free-photo/portrait-group-students-celebrating-their-graduation_23-2148201866.jpg?t=st=1731507819~exp=1731511419~hmac=2d09aa3e97baa709bb52c37ad9e6860c0f42a7ef2411f7e21debc431a0a692f2&w=1060"
+                    class="d-block mx-auto" style="width: 100%; height: 400px;" alt="Image 3">
+            </div>
+            <div class="carousel-item">
+                <img src="https://img.freepik.com/free-photo/group-positive-young-people-working-together_23-2148431342.jpg?t=st=1731507651~exp=1731511251~hmac=0aae1f639eb1880f85c2dd2ffcfddf3a2ad64ccae735cabc8d67bd88adc6d034&w=1060"
+                    class="d-block mx-auto" style="width: 100%; height: 400px;" alt="Image 4">
+            </div>
+        </div>
+
+
+        <!-- Contrôles de navigation -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <section class="project-cards container py-5" id="formation">
+        <div class="row">
+            <h2 class="text-center mb-4">Notre Formation</h2>
+            <!-- Carte Projet 1 (Image on the Left, Text on the Right for Medium, Image on Top for Large) -->
+            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <img src="https://img.freepik.com/free-photo/professional-programmer-working-late-dark-office_1098-18705.jpg?t=st=1731502790~exp=1731506390~hmac=31a862802d8a087acf906ce02c341d62aee570e6796dc257d979313cd4c4feff&w=1060"
+                                class="card-img-top img-fluid" alt="Projet 1">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="card-body">
+                                <h3 class="card-title">Formation Web </h3>
+                                <p class="card-text">Description du Formation Web: Acquérez les compétences essentielles pour créer et déployer des sites web modernes et réactifs.</p>
+                                <a href="#" class="btn btn-primary">Voir la Formation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Projet 2 (Image on the Right, Text on the Left for Medium, Image on Top for Large) -->
+            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-6 order-md-2  col-lg-12">
+                            <img src="https://img.freepik.com/free-photo/representations-user-experience-interface-design_23-2150038906.jpg?t=st=1731503630~exp=1731507230~hmac=37a026053db0370c3485593ffc05c789469598848f7a96ecbd8170b8c52105e5&w=1060"
+                                class="card-img-top img-fluid" alt="Projet 2">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="card-body">
+                                <h3 class="card-title">Formation mobile</h3>
+                                <p class="card-text">Description du Formation mobile:  Apprenez à concevoir et développer des applications performantes et intuitives pour appareils mobiles.</p>
+                                <a href="#" class="btn btn-primary">Voir la Formation</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte Projet 3 (Image on the Left, Text on the Right for Medium, Image on Top for Large) -->
+            <div class="col-12 col-md-12 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="row g-0">
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <img src="https://img.freepik.com/free-photo/handsome-engineer-writing-clipboard_23-2148323434.jpg?t=st=1731508868~exp=1731512468~hmac=a101a70764cf3315f9222c31a7a97d2a055771858b11573dcf206ccae82745ff&w=1060"
+                                class="card-img-top img-fluid" alt="Projet 3">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-12">
+                            <div class="card-body">
+                                <h3 class="card-title">Formation réseau</h3>
+                                <p class="card-text">Description du  formation réseau: Formation
+                                     essentielle pour maîtriser l'administration, la sécurité et la gestion des infrastructures réseaux.</p>
+                                <a href="#" class="btn btn-primary">Voir la Formation</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="team-section py-5" id="service">
+        <div class="container text-center">
+            <h2 class="section-title mb-5" >Notre Équipe</h2>
+            <div class="row">
+                <!-- Carte Membre 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://img.freepik.com/free-photo/medium-shaot-woman-standing-office-with-her-hands-folded_1098-20025.jpg?t=st=1731505498~exp=1731509098~hmac=52c7a771d1c41df5808a9a7dda09d22e7a33d568a2e0d6cdc975d129a87f39ab&w=360"
+                            class="card-img-top team-img" alt="Membre 1">
+                        <div class="card-body">
+                            <h3 class="card-title team-name">Erradi Rihame</h3>
+                            <p class="team-title text-muted">Formatrice Web</p>
+                            <p class="team-description">Passionnée par le développement web, Rihame transmet son expertise avec dynamisme, 
+                                en guidant les apprenants dans la création d'interfaces intuitives et performantes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte Membre 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://img.freepik.com/free-photo/handsome-elegant-man-shirt-tie-looking-camera_171337-10757.jpg?t=st=1731505656~exp=1731509256~hmac=480161ac16a1e7338535fdc4a04c8199ad6446b363954532bdb90994cadab8b9&w=1060"
+                            class="card-img-top team-img" alt="Membre 2">
+                        <div class="card-body">
+                            <h3 class="card-title team-name">Pr Saad</h3>
+                            <p class="team-title text-muted">Formateur mobile</p>
+                            <p class="team-description">Pr saad partage son savoir-faire en développement mobile avec rigueur, en accompagnant ses élèves dans la création d’applications intuitives et fonctionnelles, prêtes à relever les défis du marché mobile.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte Membre 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="https://img.freepik.com/free-photo/happy-businessman-smiling-camera_1163-4660.jpg?t=st=1731505741~exp=1731509341~hmac=5666a6d22765d5d64879a60438ad18a37c43c96517054caaab537d2220462dbf&w=1060"
+                            class="card-img-top team-img" alt="Membre 3">
+                        <div class="card-body">
+                            <h3 class="card-title team-name">Pr Youness</h3>
+                            <p class="team-title text-muted">Formateur Réseau</p>
+                            <p class="team-description">enseigne les bases et les subtilités du réseau, en accompagnant les étudiants vers une maîtrise des infrastructures modernes et en leur assurant une compréhension pratique des environnements sécurisés et performants.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer bg-dark text-white py-3" id="contact">
+        <div class="container">
+            <div class="row">
+                <!-- Section Contact avec icônes -->
+                <div class="col-md-6 mb-4">
+                    <h3 class="footer-heading text-uppercase mb-4">Contactez-nous</h3>
+                    <ul class="list-unstyled">
+                        <li class="d-flex align-items-center mb-3">
+                            <img src="https://img.icons8.com/ios-filled/24/ffffff/email.png" alt="Email Icon"
+                                class="icon me-3">
+                            <p class="mb-0">eseg@enset-media.ac.ma</p>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <img src="https://img.icons8.com/ios-filled/24/ffffff/phone.png" alt="Phone Icon"
+                                class="icon me-3">
+                            <p class="mb-0">+212 655 09 75 46</p>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <img src="https://img.icons8.com/ios-filled/24/ffffff/marker.png" alt="Location Icon"
+                                class="icon me-3">
+                            <p class="mb-0">ENSET Mohammedia,Bd Hassan II,Mohammédia 28830</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Section Google Maps -->
+                <div class="col-md-6 mb-4">
+                    <h3 class="footer-heading text-uppercase mb-4">Où nous trouver</h3>
+                    <div class="ratio ratio-16x9">
+                        <!-- Intégration de Google Maps -->
+                        <iframe width="90%" height="90%" loading="lazy" allowfullscreen
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=ENSET%20Mohammedia&zoom=10&maptype=roadmap"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <p class="mb-0 text-muted">&copy;2024 ENSET Mohammedia. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Boutons de navigation -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+</body>
+<style>
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .animate {
+        visibility: hidden;
+    }
+
+    .animate.visible {
+        visibility: visible;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .team-img {
+        width: 150px;
+
+        height: 150px;
+
+        object-fit: cover;
+
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+
+    .footer {
+        background: linear-gradient(135deg, #4c98c8, #c3ebd4);
+        /* Dégradé de bleu à vert */
+        color: white;
+        font-size: 1rem;
+    }
+
+    .footer-heading {
+        font-size: 1.25rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+    }
+
+    .icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer ul {
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    .footer li {
+        font-size: 1.1rem;
+    }
+
+    .footer p {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    .text-muted {
+        font-size: 0.875rem;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+        .order-md-2 {
+            order: 2;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .order-md-2 {
+            order: 0 !important;
+        }
+    }
+    
+</style>
+
+</html>
